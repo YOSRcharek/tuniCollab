@@ -71,13 +71,9 @@ La plateforme comprend les modules suivants :
 
 ## ⚙️ Installation & Lancement
 
-### 1️⃣ Prérequis
+###  Prérequis
 - **PHP** 8.1 ou supérieur
 - **Composer** (gestionnaire de dépendances PHP)
 - **MySQL** 8+
 - **Symfony CLI** (facultatif mais recommandé)
 
-### 2️⃣ Cloner le projet
-```bash
-git clone https://github.com/votre-repo/plateforme-associations.git
-cd plateforme-associations
