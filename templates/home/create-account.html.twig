@@ -1,0 +1,237 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+
+<!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create account - TuniCollab</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/front/images/grandLogo.png') }}" />
+
+    <link rel="stylesheet" href="assets/back/css/tailwind.output.css" />
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <script src="assets/back/js/init-alpine.js"></script>
+    {% block stylesheets %}
+    <link href="{{ asset('assets/front/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/front/css/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/front/css/templatemo-kind-heart-charity.css') }}" rel="stylesheet">
+
+    {% endblock %}
+    <title>Create account - TuniCollab</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/front/images/grandLogo.png') }}" />
+
+    <link rel="stylesheet" href="assets/back/css/tailwind.output.css" />
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <script src="assets/back/js/init-alpine.js"></script>
+ 
+
+    {% block javascripts %}
+    <script src="{{ asset('assets/front/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('assets/front/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/front/js/counter.js') }}"></script>
+    <script src="{{ asset('assets/front/js/click-scroll.js') }}"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+        .suggestion {
+            cursor: pointer;
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+        .suggestion:hover {
+            background-color: #f0f0f0;
+        }
+    </style></body>
+    {% endblock %}
+  
+  </head>
+  <body>
+    <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
+        <div class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
+            <div class="flex flex-col overflow-y-auto md:flex-row">
+                <div class="h-32 md:h-auto md:w-1/2">
+                    <img aria-hidden="true" class="object-cover w-full h-full dark:hidden"
+                        src="{{ asset('assets/front/images/volontInscrir.png') }}" alt="Logo" />
+                </div>
+                <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+                    <div class="w-full">
+                        {% if app.flashes('success') %}
+                            <div class="alert alert-success">
+                                {{ app.flashes('success')[0] }}
+                            </div>
+                        {% endif %}
+                        <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">Create account as a association</h1>
+  
+                       
+                     <form method="post" action="{{ path('app_inscrire') }}" 
+
+                        {{ form_start(form, {'attr': {'class': 'form','enctype': 'multipart/form-data'}}) }}
+
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    {{ form_row(form.email, {'label': 'Email:', 'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    {{ form_row(form.password, {'label': 'Password:', 'attr': {'class': 'form-control'}}) }}
+                                  
+                                </div>
+                            </div>
+                           
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                {{ form_row(form.nom, {'label': 'Name:', 'attr': {'class': 'form-control'}}) }}
+                              
+                            </div>
+                        </div>
+                            
+                                <div class="col-lg-6 col-12">  
+                                    <div class="form-group">      
+                                 {{ form_row(form.telephone, {'label': 'Phone:', 'attr': {'class': 'form-control'}}) }}
+                              
+                                </div>
+                            </div>
+                               <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                {{ form_row(form.domaineActivite, {'label': 'Domaine:', 'attr': {'class': 'form-control'}}) }}
+                              
+                            </div>
+                        </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group">
+                                    {{ form_row(form.description, {'label': 'Description:', 'attr': {'class': 'form-control'}}) }}
+                                  
+                                </div>
+                            </div>
+                               
+                        <div >
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                  
+                                    {{ form_row(form.document, {'label': 'Document:', 'attr': {'class': 'form-control-file'}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {{ form_row(form.adresse, {'label': 'Adress:','id':'search', 'attr': {'class': 'form-control'}}) }}
+                                 
+                              
+                                <div id="suggestions"></div>
+                                
+                                <div id="map"></div>
+                                
+                                <script>
+                                    mapboxgl.accessToken = 'pk.eyJ1IjoieW9zcmNoYXJlazMxIiwiYSI6ImNsdDZkd2JzcTBjcHYybW12NzE4aGNseDYifQ.pv6x004655o_tl9uncoxag';
+                                
+                                    const searchInput = document.getElementById('search');
+                                    const suggestionsContainer = document.getElementById('suggestions');
+                                
+                                    const map = new mapboxgl.Map({
+                                        container: 'map',
+                                        style: 'mapbox://styles/mapbox/streets-v11',
+                                        center: [-74.5, 40], // default center
+                                        zoom: 9 // default zoom
+                                    });
+                                
+                                    let marker;
+                                
+                                    searchInput.addEventListener('input', function () {
+                                        // Perform autocomplete
+                                        const inputValue = this.value.trim();
+                                        if (!inputValue) {
+                                            suggestionsContainer.innerHTML = '';
+                                            return;
+                                        }
+                                
+                                        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${inputValue}.json?access_token=${mapboxgl.accessToken}`)
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                suggestionsContainer.innerHTML = '';
+                                                data.features.forEach(feature => {
+                                                    const suggestion = document.createElement('div');
+                                                    suggestion.textContent = feature.place_name;
+                                                    suggestion.classList.add('suggestion');
+                                                    suggestion.addEventListener('click', function () {
+                                                        // Handle click on a suggestion
+                                                        console.log(feature);
+                                                        searchInput.value = feature.place_name;
+                                                        suggestionsContainer.innerHTML = ''; // Clear suggestions
+                                                        
+                                                        const coordinates = feature.center;
+                                                        
+                                                        // Fly to the selected address
+                                                        map.flyTo({
+                                                            center: coordinates,
+                                                            zoom: 14 // Adjust the zoom level as needed
+                                                        });
+                                                        
+                                                        // Remove existing marker if any
+                                                        if (marker) {
+                                                            marker.remove();
+                                                        }
+                                                        
+                                                        // Create a marker at the selected address
+                                                        marker = new mapboxgl.Marker()
+                                                            .setLngLat(coordinates)
+                                                            .addTo(map);
+                                                    });
+                                                    suggestionsContainer.appendChild(suggestion);
+                                                });
+                                            })
+                                            .catch(error => {
+                                                console.error('Error fetching suggestions:', error);
+                                            });
+                                    });
+                                </script>
+                                        
+                            </div>
+                        </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        {{ form_widget(form.status, {'attr': {'style': 'display: none;'}}) }}
+                        {{ form_widget(form.ActiveCompte, {'attr': {'style': 'display: none;'}}) }}
+                        {{ form_widget(form.dateDemande, {'attr': {'style': 'display: none;'}}) }}
+
+                    {{ form_end(form) }}
+                    </form>
+                    <hr class="my-8" />
+                    <p class="mt-4">
+                        <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
+                            href="./login.html">Already have an account? Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </body>
+</html>
+{% endblock %}
+
